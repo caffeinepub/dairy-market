@@ -1,0 +1,16 @@
+{
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup, defining all routes (catalog, cart, checkout, confirmation) and wrapping them in a layout with header and footer.",
+  "frontend/src/hooks/useQueries.ts": "Custom React Query hooks for all backend operations including fetching products, managing cart (add, remove, get), retrieving cart total, and processing checkout.",
+  "frontend/src/components/Header.tsx": "Responsive header component with site branding, navigation links, and shopping cart icon with item count badge, includes mobile menu using Sheet component.",
+  "frontend/src/components/Footer.tsx": "Footer component displaying copyright information and attribution link to caffeine.ai with proper UTM tracking parameters.",
+  "frontend/src/components/ProductCard.tsx": "Product card component displaying product image, name, description, price, and add-to-cart button with loading and success states.",
+  "frontend/src/components/ProductGrid.tsx": "Grid layout component that fetches and displays all products using ProductCard components, includes loading skeletons and empty state.",
+  "frontend/src/components/CartItem.tsx": "Individual cart item component with product details, quantity controls (increase/decrease), total price calculation, and remove button.",
+  "frontend/src/components/Cart.tsx": "Shopping cart component displaying all cart items, total price, and checkout button, includes empty cart state with call-to-action.",
+  "frontend/src/pages/Catalog.tsx": "Home page component featuring hero banner with farm imagery and product grid displaying all available dairy products.",
+  "frontend/src/pages/CartPage.tsx": "Dedicated cart page wrapping the Cart component with navigation back to catalog and page title.",
+  "frontend/src/pages/Checkout.tsx": "Checkout page with order summary and delivery information form, processes order submission and navigates to confirmation page.",
+  "frontend/src/pages/OrderConfirmation.tsx": "Order confirmation page displaying success message and next steps after successful checkout.",
+  "frontend/src/index.css": "Global styles with farm-inspired OKLCH color system featuring natural greens and earth tones for both light and dark modes, includes touch-friendly button sizing.",
+  "frontend/tailwind.config.js": "Tailwind configuration with custom farm-inspired color palette, typography settings using Inter font, and extended design tokens for consistent styling."
+}

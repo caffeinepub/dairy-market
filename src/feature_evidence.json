@@ -1,0 +1,113 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-product-catalog-displaying-dairy-items-including-milk-curd-eggs-and-other-dairy-products-with-product-images-names-descriptions-and-prices",
+      "featureTitle": "Create a product catalog displaying dairy items including milk, curd, eggs, and other dairy products with product images, names, descriptions, and prices",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/ProductCard.tsx",
+        "frontend/src/components/ProductGrid.tsx",
+        "frontend/src/pages/Catalog.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-shopping-cart-functionality-allowing-users-to-add-dairy-products-adjust-quantities-and-view-their-cart-total",
+      "featureTitle": "Implement shopping cart functionality allowing users to add dairy products, adjust quantities, and view their cart total",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Cart.tsx",
+        "frontend/src/components/CartItem.tsx",
+        "frontend/src/components/Header.tsx",
+        "frontend/src/components/ProductCard.tsx",
+        "frontend/src/pages/CartPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-checkout-process-where-users-can-review-their-order-and-complete-the-purchase",
+      "featureTitle": "Create a checkout process where users can review their order and complete the purchase",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Cart.tsx",
+        "frontend/src/pages/Checkout.tsx",
+        "frontend/src/pages/OrderConfirmation.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-design-the-application-to-be-fully-mobile-responsive-with-an-optimized-layout-for-phone-screens",
+      "featureTitle": "Design the application to be fully mobile-responsive with an optimized layout for phone screens",
+      "files": [
+        "frontend/src/components/Header.tsx",
+        "frontend/src/components/ProductGrid.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-fresh-farm-inspired-visual-theme-with-warm-natural-colors-greens-whites-earth-tones-clean-typography-and-a-welcoming-layout-that-evokes-trust-and-freshness-appropriate-for-a-dairy-marketplace",
+      "featureTitle": "Apply a fresh, farm-inspired visual theme with warm, natural colors (greens, whites, earth tones), clean typography, and a welcoming layout that evokes trust and freshness appropriate for a dairy marketplace",
+      "files": [
+        "frontend/src/components/Header.tsx",
+        "frontend/src/components/ProductCard.tsx",
+        "frontend/src/index.css",
+        "frontend/src/pages/Catalog.tsx",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

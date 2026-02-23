@@ -1,0 +1,193 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Dairy Market - Frontend Implementation Plan",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Display product catalog with dairy items including images, names, descriptions, and prices",
+      "acceptanceCriteria": [
+        "Product catalog displays at least milk, curd, and eggs as separate items",
+        "Each product shows an image, name, description, and price",
+        "Products are stored in the backend and retrieved by the frontend",
+        "Catalog is visually organized and easy to browse"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ProductCard.tsx",
+          "operation": "create",
+          "description": "Create ProductCard component to display individual product with image, name, description, price, and add-to-cart button. Use generated images from frontend/public/assets/generated/ (milk-product.dim_400x400.png, curd-product.dim_400x400.png, eggs-product.dim_400x400.png). Apply farm-inspired styling with natural colors."
+        },
+        {
+          "path": "frontend/src/components/ProductGrid.tsx",
+          "operation": "create",
+          "description": "Create ProductGrid component to display all products in a responsive grid layout. Fetch products using getAllProducts() backend method and map each Product to a ProductCard. Ensure grid adapts to single column on mobile screens."
+        },
+        {
+          "path": "frontend/src/pages/Catalog.tsx",
+          "operation": "create",
+          "description": "Create Catalog page component that renders ProductGrid and provides the main product browsing experience. Include hero section with generated hero-banner.dim_1200x400.png from frontend/public/assets/generated/. Apply consistent farm-inspired theme."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire Catalog page into the app routing. Set Catalog as the default/home route so users land on the product catalog when visiting the application."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Implement shopping cart with add, adjust quantity, remove, and view total functionality",
+      "acceptanceCriteria": [
+        "Users can add products to cart from the catalog",
+        "Users can increase or decrease quantities in the cart",
+        "Users can remove items from the cart",
+        "Cart displays running total of all items",
+        "Cart state persists during the session"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useCart.ts",
+          "operation": "create",
+          "description": "Create custom hook to manage cart state and operations. Wrap backend methods addToCart(), removeFromCart(), getCart(), and getCartTotal(). Provide functions for adding products, updating quantities, removing items, and fetching cart data. Handle loading and error states."
+        },
+        {
+          "path": "frontend/src/components/CartItem.tsx",
+          "operation": "create",
+          "description": "Create CartItem component to display a single cart item with product image, name, price, quantity controls (increase/decrease buttons), and remove button. Use CartItem type from backend interface. Apply farm-inspired styling."
+        },
+        {
+          "path": "frontend/src/components/Cart.tsx",
+          "operation": "create",
+          "description": "Create Cart component to display all cart items using CartItem components. Show cart total using getCartTotal() backend method. Display empty cart message when cart is empty. Include proceed to checkout button."
+        },
+        {
+          "path": "frontend/src/components/ProductCard.tsx",
+          "operation": "modify",
+          "description": "Add add-to-cart button to ProductCard that calls addToCart() via useCart hook. Provide visual feedback when product is added successfully. Ensure button is touch-friendly for mobile users."
+        },
+        {
+          "path": "frontend/src/pages/CartPage.tsx",
+          "operation": "create",
+          "description": "Create CartPage that renders the Cart component as a dedicated page. Include navigation back to catalog and forward to checkout."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire CartPage into app routing. Add cart route and ensure cart icon/link in navigation points to this page."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "create",
+          "description": "Create Header component with site branding, navigation links to Catalog and Cart, and cart icon showing item count. Apply farm-inspired theme with natural colors. Ensure mobile-responsive navigation."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add Header component to app layout so it appears on all pages."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Create checkout process with order review, delivery information collection, and order confirmation",
+      "acceptanceCriteria": [
+        "Checkout page displays order summary with all items and total",
+        "Users can enter delivery information (name, address, contact)",
+        "Order is saved to the backend upon completion",
+        "Users receive confirmation after successful checkout"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Checkout.tsx",
+          "operation": "create",
+          "description": "Create Checkout page displaying order summary (cart items and total) and delivery information form (name, address, contact). On form submission, call checkout() backend method to save order, then navigate to confirmation page. Apply farm-inspired styling and ensure mobile-responsive form inputs."
+        },
+        {
+          "path": "frontend/src/pages/OrderConfirmation.tsx",
+          "operation": "create",
+          "description": "Create OrderConfirmation page displaying success message and order details. Provide navigation back to catalog. Apply consistent farm-inspired theme."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire Checkout and OrderConfirmation pages into app routing. Register routes for /checkout and /confirmation."
+        },
+        {
+          "path": "frontend/src/components/Cart.tsx",
+          "operation": "modify",
+          "description": "Add checkout button that navigates to the Checkout page. Disable button if cart is empty."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Ensure mobile-responsive design with optimized layouts for phone screens",
+      "acceptanceCriteria": [
+        "All pages render correctly on mobile screen sizes",
+        "Touch-friendly buttons and interactions",
+        "Product grid adapts to single column on small screens",
+        "Navigation is accessible and usable on mobile devices"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Configure responsive breakpoints and ensure mobile-first utilities are available. Verify Tailwind is set up to support single-column layouts on small screens."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add global responsive styles ensuring touch-friendly button sizes (minimum 44x44px), accessible text sizes, and mobile-optimized spacing. Apply mobile-first approach."
+        },
+        {
+          "path": "frontend/src/components/ProductGrid.tsx",
+          "operation": "modify",
+          "description": "Ensure product grid uses responsive Tailwind classes to display single column on small screens (sm and below) and multiple columns on larger screens."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Ensure Header navigation is mobile-responsive with accessible menu and touch-friendly links. Consider hamburger menu pattern if needed."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Apply fresh, farm-inspired visual theme with natural colors, clean typography, and welcoming layout",
+      "acceptanceCriteria": [
+        "Color scheme uses natural, farm-inspired tones (avoid blue and purple)",
+        "Typography is clean and readable",
+        "Overall design conveys freshness and trustworthiness",
+        "Visual theme is applied consistently across all pages"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Define custom color palette with farm-inspired natural tones (greens, whites, earth tones such as warm browns, creams, soft greens). Set primary, secondary, and accent colors. Configure clean, readable font families."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Apply global typography styles using clean, readable fonts. Set base text color, background colors, and spacing that convey freshness and trust. Ensure consistent application of farm-inspired theme across all elements."
+        },
+        {
+          "path": "frontend/src/components/ProductCard.tsx",
+          "operation": "modify",
+          "description": "Apply farm-inspired styling to ProductCard using defined color palette and typography. Ensure card design conveys freshness and quality."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Apply farm-inspired theme to Header with natural colors and welcoming layout. Ensure branding conveys trust and freshness."
+        },
+        {
+          "path": "frontend/src/pages/Catalog.tsx",
+          "operation": "modify",
+          "description": "Ensure Catalog page applies farm-inspired theme consistently, including hero section using hero-banner.dim_1200x400.png from frontend/public/assets/generated/. Use natural colors and welcoming layout throughout."
+        }
+      ]
+    }
+  ]
+}
