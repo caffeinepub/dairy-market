@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 3,
+  "projectStateVersion": 5,
   "summary": "Web application for selling dairy products (milk, curd, eggs, etc.)",
   "architectural_notes": [
     "Web application optimized for mobile browsers (Android-friendly)",
@@ -8,7 +8,6 @@
   ],
   "known_issues": [],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Fresh milk bottle product photo with white background (milk-product.dim_400x400.png)\n- Bowl of fresh curd product photo with white background (curd-product.dim_400x400.png)\n- Brown eggs in carton product photo with white background (eggs-product.dim_400x400.png)\n- Farm-fresh hero banner with dairy products and pastoral background (hero-banner.dim_1200x400.png)",
   "existing_features": [
     {
       "id": "feature-create-a-product-catalog-displaying-dairy-items-including-milk-curd-eggs-and-other-dairy-products-with-product-images-names-descriptions-and-prices",
@@ -49,6 +48,22 @@
         "REQ-5"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-update-the-application-name-from-fresh-dairy-market-to-dairydelight-in-the-header-logo-branding",
+      "title": "Update the application name from 'Fresh Dairy Market' to 'DairyDelight' in the header logo/branding",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-any-page-titles-meta-tags-or-document-titles-from-fresh-dairy-market-to-dairydelight",
+      "title": "Update any page titles, meta tags, or document titles from 'Fresh Dairy Market' to 'DairyDelight'",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -68,6 +83,14 @@
       "id": "AR-3",
       "summary": "Mobile-responsive design for browsing on phones",
       "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Update the hero banner text on the catalog page from 'Fresh Dairy Market' to 'DairyDelight' if present",
+      "reqIds": [
+        "REQ-8"
+      ],
       "status": "pending"
     }
   ],

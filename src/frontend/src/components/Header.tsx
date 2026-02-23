@@ -16,7 +16,7 @@ export default function Header() {
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary">
             <span className="text-xl font-bold text-primary-foreground">🥛</span>
           </div>
-          <span className="text-xl font-bold text-foreground">Fresh Dairy Market</span>
+          <span className="text-xl font-bold text-foreground">DairyDelight</span>
         </Link>
 
         {/* Desktop Navigation */}

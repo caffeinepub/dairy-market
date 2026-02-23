@@ -1,106 +1,72 @@
 {
   "kind": "build_request",
-  "title": "Create dairy products e-commerce web application",
-  "projectName": "Dairy Market",
+  "title": "Rename application from Fresh Dairy Market to DairyDelight",
+  "projectName": "DairyDelight",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-1",
-      "text": "Create a product catalog displaying dairy items including milk, curd, eggs, and other dairy products with product images, names, descriptions, and prices",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Product catalog displays at least milk, curd, and eggs as separate items",
-        "Each product shows an image, name, description, and price",
-        "Products are stored in the backend and retrieved by the frontend",
-        "Catalog is visually organized and easy to browse"
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "text": "Implement shopping cart functionality allowing users to add dairy products, adjust quantities, and view their cart total",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Users can add products to cart from the catalog",
-        "Users can increase or decrease quantities in the cart",
-        "Users can remove items from the cart",
-        "Cart displays running total of all items",
-        "Cart state persists during the session"
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "text": "Create a checkout process where users can review their order and complete the purchase",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Checkout page displays order summary with all items and total",
-        "Users can enter delivery information (name, address, contact)",
-        "Order is saved to the backend upon completion",
-        "Users receive confirmation after successful checkout"
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "text": "Design the application to be fully mobile-responsive with an optimized layout for phone screens",
+      "id": "REQ-6",
+      "text": "Update the application name from 'Fresh Dairy Market' to 'DairyDelight' in the header logo/branding",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-latest"
+        ],
+        "quotes": [
+          "change name to dairydelight from fresh dairy market"
         ]
       },
       "acceptanceCriteria": [
-        "All pages render correctly on mobile screen sizes",
-        "Touch-friendly buttons and interactions",
-        "Product grid adapts to single column on small screens",
-        "Navigation is accessible and usable on mobile devices"
+        "Header component displays 'DairyDelight' as the application name",
+        "Logo/branding text is updated throughout the navigation"
       ]
     },
     {
-      "id": "REQ-5",
-      "text": "Apply a fresh, farm-inspired visual theme with warm, natural colors (greens, whites, earth tones), clean typography, and a welcoming layout that evokes trust and freshness appropriate for a dairy marketplace",
+      "id": "REQ-7",
+      "text": "Update any page titles, meta tags, or document titles from 'Fresh Dairy Market' to 'DairyDelight'",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-latest"
+        ],
+        "quotes": [
+          "change name to dairydelight from fresh dairy market"
         ]
       },
       "acceptanceCriteria": [
-        "Color scheme uses natural, farm-inspired tones (avoid blue and purple)",
-        "Typography is clean and readable",
-        "Overall design conveys freshness and trustworthiness",
-        "Visual theme is applied consistently across all pages"
+        "Browser tab title shows 'DairyDelight'",
+        "Any meta tags reference 'DairyDelight' instead of 'Fresh Dairy Market'"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Update the hero banner text on the catalog page from 'Fresh Dairy Market' to 'DairyDelight' if present",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-latest"
+        ],
+        "quotes": [
+          "change name to dairydelight from fresh dairy market"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Hero section displays 'DairyDelight' instead of 'Fresh Dairy Market'",
+        "All user-facing text reflects the new brand name"
       ]
     }
   ],
-  "constraints": [],
+  "constraints": [
+    "Do not modify backend functionality or data models",
+    "Preserve existing farm-inspired visual theme and styling"
+  ],
   "nonGoals": [
-    "Native Android application development",
-    "iOS application development",
-    "Payment gateway integration",
-    "User authentication system",
-    "Admin panel for managing products"
+    "Changing the visual design or color scheme",
+    "Modifying product data or cart functionality",
+    "Adding new features beyond the name change"
   ],
   "imageRequirements": {
-    "required": [
-      "Fresh milk bottle product photo with white background (milk-product.dim_400x400.png)",
-      "Bowl of fresh curd product photo with white background (curd-product.dim_400x400.png)",
-      "Brown eggs in carton product photo with white background (eggs-product.dim_400x400.png)",
-      "Farm-fresh hero banner with dairy products and pastoral background (hero-banner.dim_1200x400.png)"
-    ],
+    "required": [],
     "edits": []
   }
 }
