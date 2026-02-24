@@ -1,0 +1,231 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "StyleMart Clothing E-commerce Frontend Implementation",
+  "requirements": [
+    {
+      "id": "REQ-8",
+      "summary": "Replace dairy product catalog with clothing product catalog displaying images, brand, sizes, ratings, and discount prices across Men, Women, Kids, and Accessories categories",
+      "acceptanceCriteria": [
+        "At least 20 clothing products are displayed in the catalog on first load",
+        "Each product card shows image, name, brand, price, original price with discount %, and star rating",
+        "Products span at least 4 categories: Men, Women, Kids, Accessories",
+        "Backend stores and returns clothing-specific fields (brand, sizes, category, rating, originalPrice)"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ProductCard.tsx",
+          "operation": "modify",
+          "description": "Update ProductCard to display clothing-specific fields: brand name, star rating display, original price with strike-through, calculated discount percentage badge, and category label. Replace dairy-focused layout with fashion e-commerce card design. Use generated product images from frontend/public/assets/generated/ (e.g., product-mens-jacket.dim_400x400.png, product-womens-dress.dim_400x400.png, etc.). Add hover effects for better UX."
+        },
+        {
+          "path": "frontend/src/components/ProductGrid.tsx",
+          "operation": "modify",
+          "description": "Update ProductGrid to work with clothing products returned from backend. Ensure initialization logic calls backend to seed 20+ default clothing products spanning Men, Women, Kids, and Accessories categories. Update grid layout to use responsive columns (1 on mobile, 2 on tablet, 4 on desktop) and card-based styling consistent with modern e-commerce platforms."
+        },
+        {
+          "path": "frontend/src/pages/Catalog.tsx",
+          "operation": "modify",
+          "description": "Update hero section to use the generated hero banner image from frontend/public/assets/generated/hero-banner.dim_1200x400.png showing colorful clothing store display. Update heading and subheading text to reflect StyleMart clothing e-commerce context, removing all dairy references. Ensure ProductGrid integration displays clothing catalog."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Add category-based filtering (Men, Women, Kids, Accessories) and search bar for filtering products by name or brand, with combined filter support",
+      "acceptanceCriteria": [
+        "A category filter bar or sidebar is visible on the catalog page",
+        "Clicking a category filters the product grid to only show matching items",
+        "A search input filters products by name or brand as the user types",
+        "Search and category filter can be applied simultaneously",
+        "An 'All' option resets category filter"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/CategoryFilter.tsx",
+          "operation": "create",
+          "description": "Create a category filter component with clickable category buttons/tabs for All, Men, Women, Kids, and Accessories. Use orange and blue accent colors for active states. Component should accept onCategoryChange callback and highlight the selected category. Design should be mobile-responsive (horizontal scroll on mobile, inline on desktop)."
+        },
+        {
+          "path": "frontend/src/components/SearchBar.tsx",
+          "operation": "create",
+          "description": "Create a search input component that filters products by name or brand as the user types. Include a search icon and clear button. Use debouncing for performance. Accept onSearchChange callback prop. Style consistent with Flipkart-inspired theme using white background and subtle borders."
+        },
+        {
+          "path": "frontend/src/pages/Catalog.tsx",
+          "operation": "modify",
+          "description": "Integrate CategoryFilter and SearchBar components into the Catalog page above the ProductGrid. Implement local state for selectedCategory and searchQuery. Filter the products array client-side based on both category (using backend's Product.category field) and search term (matching against Product.name or Product.brand). Pass filtered products to ProductGrid. Ensure filters work together correctly."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Implement product detail view (modal or page) showing full product information, size selection, and Add to Cart functionality",
+      "acceptanceCriteria": [
+        "Clicking a product card opens a detail view",
+        "Detail view shows all product fields including available sizes",
+        "User can select a size before adding to cart",
+        "Add to Cart button is disabled until a size is selected",
+        "Detail view can be closed to return to the catalog"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ProductDetailModal.tsx",
+          "operation": "create",
+          "description": "Create a modal component for product details using shadcn/ui Dialog component. Display full product image, name, brand, description, star rating, price, original price with discount, and available sizes as selectable buttons/chips. Include size selection state (disabled Add to Cart until size is selected). Show selected size visually. Include close button and backdrop click to close. Use backend's Product type fields including sizes array. Call backend addToCart mutation with productId, quantity (1), and selectedSize when Add to Cart is clicked. Show toast on success/error."
+        },
+        {
+          "path": "frontend/src/components/ProductCard.tsx",
+          "operation": "modify",
+          "description": "Update ProductCard to trigger ProductDetailModal when clicked instead of directly adding to cart. Pass product data to the modal. Remove or repurpose the existing add-to-cart button to show 'View Details' instead. Ensure the card remains clickable and provides visual feedback on hover."
+        },
+        {
+          "path": "frontend/src/pages/Catalog.tsx",
+          "operation": "modify",
+          "description": "Add state to manage selected product for detail modal. Pass modal open/close handlers and selected product to ProductDetailModal component. Render ProductDetailModal at the top level of Catalog page to handle z-index and overlay properly."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Update shopping cart to display selected size, discounted prices, and handle quantity controls for clothing items",
+      "acceptanceCriteria": [
+        "Cart items display selected size",
+        "Cart shows discounted price and original price with strike-through when applicable",
+        "Quantity controls (+ / -) work correctly",
+        "Cart total updates dynamically based on quantity and price",
+        "Remove item button removes the product from the cart"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/CartItem.tsx",
+          "operation": "modify",
+          "description": "Update CartItem to display selectedSize from backend CartItem type alongside product name (e.g., 'Product Name - Size: M'). Show original price with strike-through and discount percentage if originalPrice exists. Ensure quantity controls (increase/decrease) call backend updateCartQuantity mutation with productId, selectedSize, and newQuantity. Keep remove button functionality calling removeFromCart with productId and selectedSize. Update styling to match clothing e-commerce theme."
+        },
+        {
+          "path": "frontend/src/components/Cart.tsx",
+          "operation": "modify",
+          "description": "Ensure Cart component correctly displays CartItem components with clothing-specific fields. Verify cart total calculation reflects discounted prices (product.price) multiplied by quantities. Update empty cart message to be clothing-relevant (e.g., 'Your StyleMart cart is empty'). Ensure checkout button routes to checkout page correctly."
+        },
+        {
+          "path": "frontend/src/pages/CartPage.tsx",
+          "operation": "modify",
+          "description": "Update page title and any text references from dairy to clothing context. Ensure 'Continue Shopping' button routes back to catalog. Verify Cart component integration displays all clothing cart features correctly."
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Redesign application with Flipkart-inspired visual theme using white backgrounds, orange and blue accents, card-based layout, and StyleMart branding",
+      "acceptanceCriteria": [
+        "Application name is 'StyleMart' in the header logo",
+        "Document/page title is 'StyleMart'",
+        "Color scheme uses white, orange, and blue accents consistent with a modern e-commerce platform",
+        "Header includes logo, search bar, and cart icon with item count",
+        "Product grid uses card-style layout with hover effects",
+        "No DairyDelight or dairy-related branding remains"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Update document title from 'DairyDelight' to 'StyleMart'. Update any meta descriptions to reflect clothing e-commerce context."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update CSS custom properties to define Flipkart-inspired color palette: primary colors using orange (e.g., #FF6F00, #F57C00), secondary colors using blue (e.g., #2874F0, #1565C0), white backgrounds, and clean neutral grays. Replace the existing farm-inspired color palette. Add card shadow utilities and hover effect styles for product cards. Ensure all theme colors support both light and dark modes if needed."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Update Tailwind config to extend theme with StyleMart brand colors (orange primary, blue secondary, white backgrounds). Configure custom shadows for cards and hover states. Ensure responsive breakpoints support mobile-first design. Update any DairyDelight color references."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Replace DairyDelight branding with StyleMart. Use the generated logo image from frontend/public/assets/generated/stylemart-logo.dim_300x80.png in the header. Integrate SearchBar component (created in REQ-9) into the header layout between logo and cart icon. Ensure header remains sticky with white background, subtle shadow, and includes cart icon with item count badge. Update navigation links if needed (e.g., 'Shop' instead of 'Products'). Ensure mobile responsiveness with collapsible menu."
+        },
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "modify",
+          "description": "Update footer copyright text to 'StyleMart' and change any dairy-related text to clothing e-commerce context. Maintain attribution link. Ensure footer styling matches the new white/orange/blue theme."
+        }
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "summary": "Ensure full mobile responsiveness with adaptive product grid (1 column mobile, 2 tablet, 4 desktop) and collapsible header elements",
+      "acceptanceCriteria": [
+        "Product grid shows 1 column on mobile, 2 on tablet, 4 on desktop",
+        "Header is usable on screens as small as 320px wide",
+        "Cart and checkout pages are readable and functional on mobile",
+        "Touch targets are large enough for mobile use (min 44px)"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ProductGrid.tsx",
+          "operation": "modify",
+          "description": "Update grid layout to use responsive Tailwind classes: grid-cols-1 (mobile default), sm:grid-cols-2 (tablet), lg:grid-cols-4 (desktop). Ensure proper gap spacing and padding for mobile viewports. Test that cards remain readable and clickable on 320px screens."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Ensure header layout is mobile-responsive: collapse search bar into icon/modal on mobile, use hamburger menu for navigation if multiple links exist, ensure logo scales appropriately, and cart icon remains accessible. Verify header works correctly on 320px width. All touch targets (buttons, icons) should be at least 44px for mobile usability."
+        },
+        {
+          "path": "frontend/src/components/CategoryFilter.tsx",
+          "operation": "modify",
+          "description": "Make category filter mobile-responsive: use horizontal scroll on mobile with adequate touch target sizes (min 44px height), ensure buttons are easily tappable, and switch to inline layout on tablet/desktop. Add proper spacing and visual feedback for touch interactions."
+        },
+        {
+          "path": "frontend/src/components/ProductDetailModal.tsx",
+          "operation": "modify",
+          "description": "Ensure modal is mobile-responsive: full-screen or nearly full-screen on mobile, proper scrolling for long content, size selector buttons large enough for touch (min 44px), and close button easily accessible. Test on 320px viewport."
+        },
+        {
+          "path": "frontend/src/components/Cart.tsx",
+          "operation": "modify",
+          "description": "Ensure cart layout is mobile-responsive: stack item details vertically on mobile, ensure quantity controls are touch-friendly (min 44px), and total/checkout button remains accessible at bottom on small screens."
+        },
+        {
+          "path": "frontend/src/pages/Checkout.tsx",
+          "operation": "modify",
+          "description": "Ensure checkout form is mobile-responsive: single column layout on mobile, form inputs large enough for touch interaction, readable text sizes, and submit button prominently placed. Test on 320px viewport."
+        }
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "summary": "Render generated clothing product images and StyleMart logo from frontend/public/assets/generated as static assets throughout the application",
+      "acceptanceCriteria": [
+        "All product images load from /assets/generated/ directory",
+        "StyleMart logo appears in the header",
+        "Hero banner image is displayed on the catalog page",
+        "No broken image links appear in the product grid"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Update logo image source to use frontend/public/assets/generated/stylemart-logo.dim_300x80.png. Ensure proper alt text ('StyleMart Logo') and appropriate sizing for header. Verify image loads correctly with /assets/generated/stylemart-logo.dim_300x80.png path."
+        },
+        {
+          "path": "frontend/src/pages/Catalog.tsx",
+          "operation": "modify",
+          "description": "Update hero banner image source to use frontend/public/assets/generated/hero-banner.dim_1200x400.png showing colorful clothing store display. Ensure proper alt text and responsive image sizing. Verify image loads correctly with /assets/generated/hero-banner.dim_1200x400.png path."
+        },
+        {
+          "path": "frontend/src/components/ProductCard.tsx",
+          "operation": "modify",
+          "description": "Ensure product images use the imageUrl field from backend Product type, which will reference generated images like /assets/generated/product-mens-jacket.dim_400x400.png, /assets/generated/product-womens-dress.dim_400x400.png, etc. Add proper alt text using product name. Verify all 20 product images load correctly without broken links. Include fallback image handling if needed."
+        },
+        {
+          "path": "frontend/src/components/ProductDetailModal.tsx",
+          "operation": "modify",
+          "description": "Ensure product detail modal displays the full product image from the imageUrl field, referencing generated images like frontend/public/assets/generated/product-mens-jacket.dim_400x400.png, frontend/public/assets/generated/product-womens-dress.dim_400x400.png, etc. Use larger image display size for detail view while maintaining aspect ratio. Add proper alt text and loading states."
+        }
+      ]
+    }
+  ]
+}

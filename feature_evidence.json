@@ -1,0 +1,151 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-replace-the-existing-dairy-product-catalog-with-a-clothing-product-catalog-products-should-include-clothing-items-across-categories-men-women-kids-accessories-each-product-must-display-an-image-name-brand-description-price-original-price-for-discount-display-size-options-and-a-rating-seed-the-backend-with-at-least-20-default-clothing-products-across-all-categories",
+      "featureTitle": "Replace the existing dairy product catalog with a clothing product catalog. Products should include clothing items across categories (Men, Women, Kids, Accessories). Each product must display an image, name, brand, description, price, original price (for discount display), size options, and a rating. Seed the backend with at least 20 default clothing products across all categories.",
+      "files": [
+        "frontend/src/components/ProductCard.tsx",
+        "frontend/src/components/ProductGrid.tsx",
+        "frontend/src/pages/Catalog.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-category-based-filtering-and-a-search-bar-to-the-product-catalog-users-should-be-able-to-filter-products-by-category-men-women-kids-accessories-and-search-by-product-name-or-brand-filters-and-search-should-work-together",
+      "featureTitle": "Add category-based filtering and a search bar to the product catalog. Users should be able to filter products by category (Men, Women, Kids, Accessories) and search by product name or brand. Filters and search should work together.",
+      "files": [
+        "frontend/src/components/CategoryFilter.tsx",
+        "frontend/src/components/SearchBar.tsx",
+        "frontend/src/pages/Catalog.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-product-detail-view-modal-or-page-that-opens-when-a-user-clicks-on-a-product-card-it-should-show-the-full-product-image-name-brand-description-available-sizes-price-discount-rating-and-an-add-to-cart-button-with-size-selection",
+      "featureTitle": "Implement a product detail view (modal or page) that opens when a user clicks on a product card. It should show the full product image, name, brand, description, available sizes, price, discount, rating, and an 'Add to Cart' button with size selection.",
+      "files": [
+        "frontend/src/components/ProductCard.tsx",
+        "frontend/src/components/ProductDetailModal.tsx",
+        "frontend/src/pages/Catalog.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-shopping-cart-to-support-clothing-specific-attributes-each-cart-item-should-display-the-selected-size-alongside-the-product-name-image-price-and-quantity-controls-cart-total-should-reflect-quantities-and-apply-any-discounts",
+      "featureTitle": "Update the shopping cart to support clothing-specific attributes. Each cart item should display the selected size alongside the product name, image, price, and quantity controls. Cart total should reflect quantities and apply any discounts.",
+      "files": [
+        "frontend/src/components/Cart.tsx",
+        "frontend/src/components/CartItem.tsx",
+        "frontend/src/pages/CartPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-redesign-the-entire-application-with-a-flipkart-inspired-visual-theme-clean-white-backgrounds-bold-orange-and-blue-accent-colors-card-based-product-grid-layout-prominent-header-with-logo-and-search-bar-and-a-professional-e-commerce-feel-replace-all-dairydelight-branding-with-stylemart-update-the-page-title-and-document-title-to-stylemart",
+      "featureTitle": "Redesign the entire application with a Flipkart-inspired visual theme: clean white backgrounds, bold orange and blue accent colors, card-based product grid layout, prominent header with logo and search bar, and a professional e-commerce feel. Replace all DairyDelight branding with StyleMart. Update the page title and document title to StyleMart.",
+      "files": [
+        "frontend/index.html",
+        "frontend/src/components/Footer.tsx",
+        "frontend/src/components/Header.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-the-application-is-fully-mobile-responsive-with-a-layout-optimized-for-phone-screens-the-product-grid-should-adapt-from-1-column-on-mobile-to-2-3-columns-on-tablet-and-4-columns-on-desktop-the-header-search-bar-and-navigation-should-collapse-gracefully-on-small-screens",
+      "featureTitle": "Ensure the application is fully mobile-responsive with a layout optimized for phone screens. The product grid should adapt from 1 column on mobile to 2-3 columns on tablet and 4 columns on desktop. The header search bar and navigation should collapse gracefully on small screens.",
+      "files": [
+        "frontend/src/components/Cart.tsx",
+        "frontend/src/components/CategoryFilter.tsx",
+        "frontend/src/components/Header.tsx",
+        "frontend/src/components/ProductDetailModal.tsx",
+        "frontend/src/components/ProductGrid.tsx",
+        "frontend/src/pages/Checkout.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-13"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-render-the-generated-clothing-product-images-and-the-stylemart-logo-as-static-assets-from-frontend-public-assets-generated-use-these-images-on-product-cards-the-hero-banner-and-the-header-logo",
+      "featureTitle": "Render the generated clothing product images and the StyleMart logo as static assets from frontend/public/assets/generated. Use these images on product cards, the hero banner, and the header logo.",
+      "files": [
+        "frontend/src/components/Header.tsx",
+        "frontend/src/components/ProductCard.tsx",
+        "frontend/src/components/ProductDetailModal.tsx",
+        "frontend/src/pages/Catalog.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-14"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "frontend/src/App.tsx": "Main app with TanStack Router setup defining all routes (catalog, cart, checkout, confirmation) wrapped in a Layout with Header and Footer — search state removed from Layout, no context passed via Outlet.",
+  "frontend/src/hooks/useQueries.ts": "Updated React Query hooks for all backend operations including the new clothing-specific fields: addToCart now accepts selectedSize, removeFromCart accepts selectedSize, and new useUpdateCartQuantity and useGetProductCount hooks are added.",
+  "frontend/src/components/Header.tsx": "Simplified StyleMart header with blue secondary background, logo with text fallback, cart icon with item count badge, desktop nav link, and mobile sheet menu — search props removed, search lives in Catalog.",
+  "frontend/src/components/Footer.tsx": "StyleMart footer with brand description, quick links for shop categories, help links, copyright, and caffeine.ai attribution.",
+  "frontend/src/components/ProductCard.tsx": "Clothing product card showing brand, name, star rating, price with original price strike-through, discount badge, and hover effect revealing \"View Details\" — triggers modal on click.",
+  "frontend/src/components/ProductGrid.tsx": "Responsive 1/2/4 column grid that accepts filtered products prop, initializes default products on first load, shows skeleton loading states, and handles empty/no-results states.",
+  "frontend/src/components/CartItem.tsx": "Cart item with clothing-specific fields: brand label, selected size display, original price strike-through with discount %, quantity controls using updateCartQuantity mutation, and remove button.",
+  "frontend/src/components/Cart.tsx": "Shopping cart with two-column layout (items + price summary), empty state with StyleMart branding, free delivery note, and Place Order button.",
+  "frontend/src/pages/Catalog.tsx": "Catalog page with hero banner, self-contained search bar and category filter state, filtered product grid, results count, and ProductDetailModal — all search/filter state managed internally.",
+  "frontend/src/pages/CartPage.tsx": "Cart page with \"Continue Shopping\" back link, StyleMart-branded heading, and Cart component.",
+  "frontend/src/pages/Checkout.tsx": "Checkout page with delivery form and order summary showing item names, brands, sizes, quantities, and total with free delivery — uses updated cart total as number type.",
+  "frontend/src/pages/OrderConfirmation.tsx": "Order confirmation page with success icon, processing/delivery info cards, next steps description, and Continue Shopping button.",
+  "frontend/src/index.css": "Global styles with StyleMart's Flipkart-inspired OKLCH color system (orange primary, blue secondary), component classes for product cards and size buttons, and touch-target utilities — fixed `.size-btn-unavailable` to use plain `opacity` instead of unsupported `@apply` opacity modifiers.",
+  "frontend/tailwind.config.js": "Tailwind config with StyleMart brand colors (orange primary, blue secondary), Nunito display font, card shadow utilities, and responsive design tokens.",
+  "frontend/index.html": "HTML entry point with updated title \"StyleMart\", meta description for clothing e-commerce, and Google Fonts import for Nunito and Inter.",
+  "frontend/src/components/CategoryFilter.tsx": "Horizontal scrollable category filter with pill buttons for All/Men/Women/Kids/Accessories, active state using primary color, mobile-responsive with touch targets.",
+  "frontend/src/components/SearchBar.tsx": "Standalone search input component with search icon, clear button, and onChange callback for filtering products by name or brand.",
+  "frontend/src/components/ProductDetailModal.tsx": "Full product detail modal using shadcn Dialog with image, brand, name, description, star rating, price with discount, size selection buttons, and Add to Cart with loading state."
+}

@@ -1,0 +1,186 @@
+{
+  "kind": "build_request",
+  "title": "Build a Flipkart-style clothing e-commerce application",
+  "projectName": "StyleMart",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-8",
+      "text": "Replace the existing dairy product catalog with a clothing product catalog. Products should include clothing items across categories (Men, Women, Kids, Accessories). Each product must display an image, name, brand, description, price, original price (for discount display), size options, and a rating. Seed the backend with at least 20 default clothing products across all categories.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "i want to build an application where i can sell clothes as flipkart does"
+        ]
+      },
+      "acceptanceCriteria": [
+        "At least 20 clothing products are displayed in the catalog on first load",
+        "Each product card shows image, name, brand, price, original price with discount %, and star rating",
+        "Products span at least 4 categories: Men, Women, Kids, Accessories",
+        "Backend stores and returns clothing-specific fields (brand, sizes, category, rating, originalPrice)"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Add category-based filtering and a search bar to the product catalog. Users should be able to filter products by category (Men, Women, Kids, Accessories) and search by product name or brand. Filters and search should work together.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "sell clothes as flipkart does"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A category filter bar or sidebar is visible on the catalog page",
+        "Clicking a category filters the product grid to only show matching items",
+        "A search input filters products by name or brand as the user types",
+        "Search and category filter can be applied simultaneously",
+        "An 'All' option resets category filter"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Implement a product detail view (modal or page) that opens when a user clicks on a product card. It should show the full product image, name, brand, description, available sizes, price, discount, rating, and an 'Add to Cart' button with size selection.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "sell clothes as flipkart does"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking a product card opens a detail view",
+        "Detail view shows all product fields including available sizes",
+        "User can select a size before adding to cart",
+        "Add to Cart button is disabled until a size is selected",
+        "Detail view can be closed to return to the catalog"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Update the shopping cart to support clothing-specific attributes. Each cart item should display the selected size alongside the product name, image, price, and quantity controls. Cart total should reflect quantities and apply any discounts.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "sell clothes as flipkart does"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Cart items display selected size",
+        "Cart shows discounted price and original price with strike-through when applicable",
+        "Quantity controls (+ / -) work correctly",
+        "Cart total updates dynamically based on quantity and price",
+        "Remove item button removes the product from the cart"
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Redesign the entire application with a Flipkart-inspired visual theme: clean white backgrounds, bold orange and blue accent colors, card-based product grid layout, prominent header with logo and search bar, and a professional e-commerce feel. Replace all DairyDelight branding with StyleMart. Update the page title and document title to StyleMart.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "sell clothes as flipkart does"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Application name is 'StyleMart' in the header logo",
+        "Document/page title is 'StyleMart'",
+        "Color scheme uses white, orange, and blue accents consistent with a modern e-commerce platform",
+        "Header includes logo, search bar, and cart icon with item count",
+        "Product grid uses card-style layout with hover effects",
+        "No DairyDelight or dairy-related branding remains"
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Ensure the application is fully mobile-responsive with a layout optimized for phone screens. The product grid should adapt from 1 column on mobile to 2-3 columns on tablet and 4 columns on desktop. The header search bar and navigation should collapse gracefully on small screens.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "sell clothes as flipkart does"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Product grid shows 1 column on mobile, 2 on tablet, 4 on desktop",
+        "Header is usable on screens as small as 320px wide",
+        "Cart and checkout pages are readable and functional on mobile",
+        "Touch targets are large enough for mobile use (min 44px)"
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "text": "Render the generated clothing product images and the StyleMart logo as static assets from frontend/public/assets/generated. Use these images on product cards, the hero banner, and the header logo.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "sell clothes as flipkart does"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All product images load from /assets/generated/ directory",
+        "StyleMart logo appears in the header",
+        "Hero banner image is displayed on the catalog page",
+        "No broken image links appear in the product grid"
+      ]
+    }
+  ],
+  "constraints": [
+    "All backend logic must remain in a single Motoko actor in backend/main.mo",
+    "Do not edit files in frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui",
+    "Generated images must be served from frontend/public/assets/generated, not through the backend"
+  ],
+  "nonGoals": [
+    "Native Android or iOS app",
+    "Real payment processing or Stripe integration",
+    "Seller dashboard or inventory management",
+    "User authentication or login (no Internet Identity required for this build)",
+    "Product reviews or user-generated content",
+    "Order tracking after confirmation"
+  ],
+  "imageRequirements": {
+    "required": [
+      "StyleMart brand logo with bold orange and blue lettering on white background (stylemart-logo.dim_300x80.png)",
+      "Hero banner showing a colorful clothing store display with folded shirts, jeans, and accessories on shelves (hero-banner.dim_1200x400.png)",
+      "Men's casual blue denim jacket on a hanger with white background (product-mens-jacket.dim_400x400.png)",
+      "Women's floral summer dress in pink and white on a hanger with white background (product-womens-dress.dim_400x400.png)",
+      "Kids' bright yellow hoodie with cartoon print on white background (product-kids-hoodie.dim_400x400.png)",
+      "Men's white formal dress shirt folded neatly on white background (product-mens-shirt.dim_400x400.png)",
+      "Women's high-waisted black jeans on a hanger with white background (product-womens-jeans.dim_400x400.png)",
+      "Men's grey slim-fit chinos folded neatly on white background (product-mens-chinos.dim_400x400.png)",
+      "Women's red knit sweater on a hanger with white background (product-womens-sweater.dim_400x400.png)",
+      "Kids' navy blue school uniform set with shirt and shorts on white background (product-kids-uniform.dim_400x400.png)",
+      "Brown leather crossbody bag on white background (product-accessory-bag.dim_400x400.png)",
+      "Classic white canvas sneakers pair on white background (product-accessory-sneakers.dim_400x400.png)",
+      "Men's black polo t-shirt folded on white background (product-mens-polo.dim_400x400.png)",
+      "Women's olive green cargo trousers on a hanger with white background (product-womens-cargo.dim_400x400.png)",
+      "Kids' pink princess-themed party frock on a hanger with white background (product-kids-frock.dim_400x400.png)",
+      "Men's navy blue formal blazer on a hanger with white background (product-mens-blazer.dim_400x400.png)",
+      "Women's beige trench coat on a hanger with white background (product-womens-coat.dim_400x400.png)",
+      "Striped multicolor cotton scarf folded on white background (product-accessory-scarf.dim_400x400.png)",
+      "Kids' green dinosaur print pyjama set on white background (product-kids-pyjama.dim_400x400.png)",
+      "Men's olive green cargo shorts on white background (product-mens-shorts.dim_400x400.png)",
+      "Women's off-white linen kurta with embroidery on a hanger with white background (product-womens-kurta.dim_400x400.png)",
+      "Black leather watch with silver dial on white background (product-accessory-watch.dim_400x400.png)"
+    ],
+    "edits": []
+  }
+}
